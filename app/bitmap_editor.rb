@@ -16,7 +16,7 @@ HELP=   "? - Help
   def return_canvas
     @canvas
   end
-  
+
   def run
     @running = true
     puts 'type ? for help'
@@ -27,6 +27,8 @@ HELP=   "? - Help
       case
         when input[0].match(/I/)
           canvas(input[1].to_i,input[2].to_i)
+        when input[0] =='S'
+          show
         when input[0] =='?'
           show_help
         when input[0] == 'X'
@@ -38,20 +40,21 @@ HELP=   "? - Help
   end
 
     def canvas(m,n)
-      column = []
-      (1..m).each {column<<'O'}
+      column = 'O' * m
       (1..n).each {@canvas<<column}
     end
 
+    def show
+      i = 0
+      (1..@canvas.count).each{
+      puts @canvas[i].to_s; i+=1 }
+    end
     
   private
     def exit_console
       puts 'goodbye!'
       @running = false
     end
-
-
-
 
       def over_pixels(input)
         input[1].to_i >PIXELS || input[2].to_i > PIXELS
