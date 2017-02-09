@@ -26,7 +26,9 @@ HELP=   "? - Help
       raise('125 pixels for both height or width') if over_pixels(input)
       case
         when input[0].match(/I/)
-          canvas(input[1].to_i,input[2].to_i)
+          canvas(x,y)
+        when input[0].match(/L/)
+          colour(x-1,y-1,c)
         when input[0] =='S'
           show
         when input[0] =='?'
@@ -49,15 +51,31 @@ HELP=   "? - Help
       (1..@canvas.count).each{
       puts @canvas[i].to_s; i+=1 }
     end
+
+    def colour(x,y,paint)
+      @canvas[x-1][y-1] = paint
+    end
     
-  private
+   private
     def exit_console
       puts 'goodbye!'
       @running = false
     end
 
       def over_pixels(input)
-        input[1].to_i >PIXELS || input[2].to_i > PIXELS
+        x >PIXELS || y > PIXELS
+      end
+
+      def x
+        input[1].to_i
+      end
+
+      def y
+        input[2].to_i
+      end
+
+      def c
+        input[3].to_s
       end
 
     def show_help

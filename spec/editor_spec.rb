@@ -16,4 +16,9 @@ subject(:be){described_class.new}
 		expect(be.return_canvas[3]).to eq('OOOO')
 	end 
 
+	it 'should return show a column and width of 4 Os' do
+		be.canvas(4,4)
+		be.colour(4,4,"A")
+		expect(be.return_canvas[3]).to eq('OOOA')
+	end 
 end
