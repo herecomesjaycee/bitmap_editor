@@ -5,20 +5,75 @@ require_relative 'spec_helper'
 describe BitmapEditor do
 subject(:be){described_class.new}
 
-	it 'should return a column of 6 Os' do
-		be.canvas(6,6)
-		expect(be.return_canvas[5]).to eq('OOOOOO')
-	end 
+before :each do
+	be.canvas(6,6)
+  end
 
-	it 'should return show a column and width of 4 Os' do
-		be.canvas(4,4)
-		be.show
-		expect(be.return_canvas[3]).to eq('OOOO')
-	end 
+  	context 'building a canvas' do
 
-	it 'should return show a column and width of 4 Os' do
-		be.canvas(4,4)
-		be.colour(4,4,"A")
-		expect(be.return_canvas[3]).to eq('OOOA')
-	end 
+		it 'should return a column of 6 Os' do
+			expect(be.return_canvas[5]).to eq('OOOOOO')
+		end 
+
+		it 'should return show a column and width of 4 Os' do
+			be.show
+			expect(be.return_canvas[3]).to eq('OOOOOO')
+		end 
+
+	end
+
+	# context 'testing color function' do
+	# 	it 'colour functionality should return the correct an A, a colour' do
+	# 		be.colour(3,4,"A")
+	# 		expect(be.return_canvas[3]).to eq('OOOAOO')
+	# 	end 
+
+	# 	it 'colour functionality should return just "O" on the first unaffected row' do
+	# 		be.colour(3,4,"A")
+	# 		expect(be.return_canvas[0]).to eq('OOOOOO')
+	# 	end 
+	# end
+
+	# context 'testing vertical drawing function' do
+	# 	it 'vertical drawing functionality should return the correct an A, a colour' do
+	# 		be.draw_v(3,4,5,"A")
+	# 		expect(be.return_canvas[3]).to eq('OOOAOO')
+	# 	end 
+
+	# 	it 'vertical drawing functionality should return the correct an A, a colour' do
+	# 		be.draw_v(3,4,5,"A")
+	# 		expect(be.return_canvas[4]).to eq('OOOAOO')
+	# 	end 
+
+	# 	it 'colour functionality should return just "O" on the first unaffected row' do
+	# 		be.draw_v(3,4,5,"A")
+	# 		expect(be.return_canvas[0]).to eq('OOOOOO')
+	# 	end 
+	# end
+	
+	# context 'testing horizontal drawing function' do
+	# 	it 'vertical drawing functionality should return the correct an A, a colour' do
+	# 		be.draw_h(3,4,5,"A")
+	# 		expect(be.return_canvas[3]).to eq('OOOAAO')
+	# 	end 
+
+	# 	it 'should return the correct As in affected row, a colour' do
+	# 		be.draw_h(3,4,5,"A")
+	# 		expect(be.return_canvas[4]).to eq('OOOOOO')
+	# 	end 
+
+	# 	it 'should return just "O"s on the first unaffected row' do
+	# 		be.draw_h(3,4,5,"A")
+	# 		expect(be.return_canvas[0]).to eq('OOOOOO')
+	# 	end 
+	# end
+
+	context 'clear the canvas' do
+		it 'should clear the whole canvas' do
+			be.colour(3,4,"A")
+			be.clear
+			expect(be.return_canvas[3]).to eq('OOOOOO')
+		end
+	end
+
 end

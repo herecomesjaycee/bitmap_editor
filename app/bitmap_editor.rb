@@ -11,6 +11,7 @@ HELP=   "? - Help
 
   def initialize
     @canvas = []
+    @input = nil
   end
 
   def return_canvas
@@ -22,18 +23,24 @@ HELP=   "? - Help
     puts 'type ? for help'
     while @running
       print '>'
-      input = gets.upcase.split(' ')
-      raise('125 pixels for both height or width') if over_pixels(input)
+      raise(' only 125 pixels for both height or width') if over_pixels(@input)
+      @input = gets.upcase.split(' ')
       case
-        when input[0].match(/I/)
+        when @input[0].match(/I/)
           canvas(x,y)
-        when input[0].match(/L/)
-          colour(x-1,y-1,c)
-        when input[0] =='S'
+        when @input[0].match(/L/)
+          colour(x,y,c)
+      when @input[0].match(/V/)
+          draw_v(x,y,z,c)
+      when @input[0].match(/H/)
+          draw_h(x,y,z,c)
+        when @input[0] =='C'
+          clear
+        when @input[0] =='S'
           show
-        when input[0] =='?'
+        when @input[0] =='?'
           show_help
-        when input[0] == 'X'
+        when @input[0] == 'X'
           exit_console
         else
           puts 'unrecognised command :('
@@ -42,8 +49,7 @@ HELP=   "? - Help
   end
 
     def canvas(m,n)
-      column = 'O' * m
-      (1..n).each {@canvas<<column}
+      (1..n).each {@canvas<<('O' * m)}
     end
 
     def show
@@ -52,30 +58,48 @@ HELP=   "? - Help
       puts @canvas[i].to_s; i+=1 }
     end
 
-    def colour(x,y,paint)
-      @canvas[x-1][y-1] = paint
+    # def colour(m,n,paint)
+    # p @canvas[m-1[n-1]] = paint
+    # p @canvas
+    # end
+
+    # def draw_v(m,n1,n2,paint)
+    # end
+
+    # def draw_h(m1,m2,n1,paint)
+    # end
+
+    def clear
+    m = @canvas.count
+    n = @canvas[0].length
+    @canvas = []
+    (1..n).each {@canvas <<("O" * m)}
     end
-    
+
+     def over_pixels(input)
+      x > PIXELS || y > PIXELS
+    end
+
    private
     def exit_console
       puts 'goodbye!'
       @running = false
     end
 
-      def over_pixels(input)
-        x >PIXELS || y > PIXELS
-      end
-
       def x
-        input[1].to_i
+        @input[1].to_i
       end
 
       def y
-        input[2].to_i
+        @input[2].to_i
       end
 
       def c
-        input[3].to_s
+        @input[3] =~ [a-zA-Z]  ? @input[3].to_s : @input[4].to_s
+      end
+
+      def z 
+        @input[3].to_i
       end
 
     def show_help
