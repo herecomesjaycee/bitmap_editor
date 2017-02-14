@@ -22,17 +22,17 @@ before :each do
 
 	end
 
-	# context 'testing color function' do
-	# 	it 'colour functionality should return the correct an A, a colour' do
-	# 		be.colour(3,4,"A")
-	# 		expect(be.return_canvas[3]).to eq('OOOAOO')
-	# 	end 
+	context 'testing color function' do
+		it 'colour functionality should return the correct an A, a colour' do
+			be.colour(3,4,"A")
+			expect(be.return_canvas[2]).to eq('OOOAOO')
+		end 
 
-	# 	it 'colour functionality should return just "O" on the first unaffected row' do
-	# 		be.colour(3,4,"A")
-	# 		expect(be.return_canvas[0]).to eq('OOOOOO')
-	# 	end 
-	# end
+		it 'colour functionality should return just "O" on the first unaffected row' do
+			be.colour(3,4,"A")
+			expect(be.return_canvas[0]).to eq('OOOOOO')
+		end 
+	end
 
 	# context 'testing vertical drawing function' do
 	# 	it 'vertical drawing functionality should return the correct an A, a colour' do

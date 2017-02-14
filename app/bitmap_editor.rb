@@ -58,10 +58,12 @@ HELP=   "? - Help
       puts @canvas[i].to_s; i+=1 }
     end
 
-    # def colour(m,n,paint)
-    # p @canvas[m-1[n-1]] = paint
-    # p @canvas
-    # end
+    def colour(m,n,paint)
+    column = @canvas
+    column[m-1][n-1] = paint
+    @canvas = []
+    @canvas = column
+    end
 
     # def draw_v(m,n1,n2,paint)
     # end
