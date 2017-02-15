@@ -64,8 +64,18 @@ HELP=   "? - Help
     @canvas = column
     end
 
-    # def draw_v(m,n1,n2,paint)
-    # end
+	  def draw_v(m1,m2,n,paint)
+	  column = @canvas
+	  column.each_with_index{|k,v|
+	  if [*m1-1..m2-1].include? v 
+	  	row = k;
+	  	row[n-1] = paint;
+	  else
+	  	k;
+	  end}
+	  reset
+	  @canvas = column
+	  end
 
     def draw_h(m,n1,n2,paint)
     column = @canvas
@@ -77,7 +87,7 @@ HELP=   "? - Help
     def clear
     m = @canvas.count
     n = @canvas[0].length
-    @canvas = []
+    reset
     (1..n).each {@canvas <<("O" * m)}
     end
 

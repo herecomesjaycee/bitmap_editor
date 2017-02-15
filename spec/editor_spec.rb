@@ -34,22 +34,22 @@ before :each do
 		end 
 	end
 
-	# context 'testing vertical drawing function' do
-	# 	it 'vertical drawing functionality should return the correct an A, a colour' do
-	# 		be.draw_v(3,4,5,"A")
-	# 		expect(be.return_canvas[3]).to eq('OOOAOO')
-	# 	end 
+	context 'testing vertical drawing function' do
+		it 'vertical drawing functionality should return the correct an A, a colour' do
+			be.draw_v(3,4,5,"A")
+			expect(be.return_canvas[2]).to eq('OOOOAO')
+		end 
 
-	# 	it 'vertical drawing functionality should return the correct an A, a colour' do
-	# 		be.draw_v(3,4,5,"A")
-	# 		expect(be.return_canvas[4]).to eq('OOOAOO')
-	# 	end 
+		it 'vertical drawing functionality should return the correct an A, a colour' do
+			be.draw_v(3,4,5,"A")
+			expect(be.return_canvas[3]).to eq('OOOOAO')
+		end 
 
-	# 	it 'colour functionality should return just "O" on the first unaffected row' do
-	# 		be.draw_v(3,4,5,"A")
-	# 		expect(be.return_canvas[0]).to eq('OOOOOO')
-	# 	end 
-	# end
+		it 'colour functionality should return just "O" on the first unaffected row' do
+			be.draw_v(3,4,5,"A")
+			expect(be.return_canvas[0]).to eq('OOOOOO')
+		end 
+	end
 	
 	context 'testing horizontal drawing function' do
 		it 'vertical drawing functionality should return the correct an A, a colour' do
