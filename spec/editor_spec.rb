@@ -51,22 +51,22 @@ before :each do
 	# 	end 
 	# end
 	
-	# context 'testing horizontal drawing function' do
-	# 	it 'vertical drawing functionality should return the correct an A, a colour' do
-	# 		be.draw_h(3,4,5,"A")
-	# 		expect(be.return_canvas[3]).to eq('OOOAAO')
-	# 	end 
+	context 'testing horizontal drawing function' do
+		it 'vertical drawing functionality should return the correct an A, a colour' do
+			be.draw_h(3,2,3,"A")
+			expect(be.return_canvas[2]).to eq('OAAOOO')
+		end 
 
-	# 	it 'should return the correct As in affected row, a colour' do
-	# 		be.draw_h(3,4,5,"A")
-	# 		expect(be.return_canvas[4]).to eq('OOOOOO')
-	# 	end 
+		it 'should return the correct As in affected row, a colour' do
+			be.draw_h(3,4,5,"A")
+			expect(be.return_canvas[4]).to eq('OOOOOO')
+		end 
 
-	# 	it 'should return just "O"s on the first unaffected row' do
-	# 		be.draw_h(3,4,5,"A")
-	# 		expect(be.return_canvas[0]).to eq('OOOOOO')
-	# 	end 
-	# end
+		it 'should return just "O"s on the first unaffected row' do
+			be.draw_h(3,4,5,"A")
+			expect(be.return_canvas[0]).to eq('OOOOOO')
+		end 
+	end
 
 	context 'clear the canvas' do
 		it 'should clear the whole canvas' do

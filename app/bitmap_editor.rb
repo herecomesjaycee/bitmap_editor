@@ -23,24 +23,23 @@ HELP=   "? - Help
     puts 'type ? for help'
     while @running
       print '>'
-      raise(' only 125 pixels for both height or width') if over_pixels(@input)
       @input = gets.upcase.split(' ')
-      case
-        when @input[0].match(/I/)
+      case @input[0]
+        when "I"
           canvas(x,y)
-        when @input[0].match(/L/)
+        when "L"
           colour(x,y,c)
-      when @input[0].match(/V/)
+      when "V"
           draw_v(x,y,z,c)
-      when @input[0].match(/H/)
+      when "H"
           draw_h(x,y,z,c)
-        when @input[0] =='C'
+        when "C"
           clear
-        when @input[0] =='S'
+        when "S"
           show
-        when @input[0] =='?'
+        when "?"
           show_help
-        when @input[0] == 'X'
+        when "X"
           exit_console
         else
           puts 'unrecognised command :('
@@ -61,25 +60,25 @@ HELP=   "? - Help
     def colour(m,n,paint)
     column = @canvas
     column[m-1][n-1] = paint
-    @canvas = []
+    reset
     @canvas = column
     end
 
     # def draw_v(m,n1,n2,paint)
     # end
 
-    # def draw_h(m1,m2,n1,paint)
-    # end
+    def draw_h(m,n1,n2,paint)
+    column = @canvas
+    column[m-1][*n1-1..n2-1] = (paint * (n2-n1+1))
+    reset
+   @canvas = column
+    end
 
     def clear
     m = @canvas.count
     n = @canvas[0].length
     @canvas = []
     (1..n).each {@canvas <<("O" * m)}
-    end
-
-     def over_pixels(input)
-      x > PIXELS || y > PIXELS
     end
 
    private
@@ -97,7 +96,7 @@ HELP=   "? - Help
       end
 
       def c
-        @input[3] =~ [a-zA-Z]  ? @input[3].to_s : @input[4].to_s
+        @input[3] =~ /[a-zA-Z]/  ? @input[3]: @input[4]
       end
 
       def z 
@@ -106,6 +105,10 @@ HELP=   "? - Help
 
     def show_help
       puts HELP
+    end
+
+    def reset
+    	@canvas = []
     end
 
 end
