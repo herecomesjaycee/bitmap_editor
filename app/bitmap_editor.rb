@@ -109,7 +109,7 @@ HELP=   "? - Help
 	end
 
 	def z 
-	@input[3].to_i
+		@input[3].to_i
 	end
 
 	def show_help
