@@ -78,7 +78,7 @@ HELP=   "? - Help
 
 	def draw_h(m,n1,n2,paint)
 		column = @canvas
-		p column[m-1][n1-1..n2-1] = paint * (n2-n1 + 1)
+		column[m-1][n1-1..n2-1] = paint * (n2-n1 + 1)
 		reset
 		@canvas = column
 	end
