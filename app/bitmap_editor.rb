@@ -69,7 +69,7 @@ HELP=   "? - Help
 		column.each_with_index{|k,v|
 			if [*m1-1..m2-1].include? v; 
 				row = k; row[n-1] = paint;
-			else
+			else 
 				k;
 			end }
 		reset
@@ -78,7 +78,7 @@ HELP=   "? - Help
 
 	def draw_h(m,n1,n2,paint)
 		column = @canvas
-		column[m-1][*n1-1..n2-1] = (paint * (n2-n1+1))
+		p column[m-1][n1-1..n2-1] = paint * (n2-n1 + 1)
 		reset
 		@canvas = column
 	end

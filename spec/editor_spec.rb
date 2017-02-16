@@ -53,8 +53,8 @@ before :each do
 	
 	context 'testing horizontal drawing function' do
 		it 'vertical drawing functionality should return the correct an A, a colour' do
-			be.draw_h(3,2,3,"A")
-			expect(be.return_canvas[2]).to eq('OAAOOO')
+			be.draw_h(3,1,4,"A")
+			expect(be.return_canvas[2]).to eq('AAAAOO')
 		end 
 
 		it 'should return the correct As in affected row, a colour' do
