@@ -53,8 +53,7 @@ HELP=   "? - Help
 
 	def show
 		i = 0
-		(1..@canvas.count).each{
-		puts @canvas[i].to_s; i+=1 }
+		(1..@canvas.count).each{ puts @canvas[i].to_s; i+=1 }
 	end
 
 	def colour(m,n,paint)
@@ -71,7 +70,7 @@ HELP=   "? - Help
 				row = k; row[n-1] = paint;
 			else 
 				k;
-			end }
+			end}
 		reset
 		@canvas = column
 	end
@@ -105,7 +104,7 @@ HELP=   "? - Help
 	end
 
 	def c
-		@input[3] =~ /[a-zA-Z]/  ? @input[3]: @input[4]
+		@input[3] =~ /[a-zA-Z]/  ? @input[3] : @input[4]
 	end
 
 	def z 
