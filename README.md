@@ -1,5 +1,5 @@
 # bitmap_editor
-Skeleton for carwow's technical test
+Solution for carwow's technical test
 
 ## Installation 
 1) Fork and/or Git Clone this repository `git clone https://github.com/herecomesjaycee/bitmap_editor.git`
